@@ -38,8 +38,11 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
     baseURL: process.env.BASE_URL || 'https://www.demoblaze.com',
+    viewport: { width: 1920, height: 1080 },
+    // Extend timeout when running on CI
+    actionTimeout: process.env.CI ? 10000 : undefined,
+    navigationTimeout: process.env.CI ? 15000 : undefined,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    storageState: undefined, // fresh session each test
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
