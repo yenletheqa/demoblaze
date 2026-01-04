@@ -142,7 +142,7 @@ yarn test:report
 - Reports are uploaded as artifacts
 
 #### Setup secrets for GitHub Actions
-1. Go to Repository -> Settings -> Secrets and variables -> Actions
+1. Go to Repository -> Settings -> Secrets and variables -> Actions -> New repository secret
 2. Add the following secrets:
 
 | Name               | Value                         |

@@ -4,7 +4,7 @@ pipeline {
     environment {
         UI_BASE_URL = credentials('UI_BASE_URL')
         API_BASE_URL = credentials('API_BASE_URL')
-        PAGE_RENDER_TIMEOUT = '5000'
+        PAGE_RENDER_TIMEOUT = credentials('PAGE_RENDER_TIMEOUT')
         USERNAME = credentials('USERNAME')
         PASSWORD = credentials('PASSWORD')
     }

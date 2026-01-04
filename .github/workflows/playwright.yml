@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: demoblaze-report-ui-${{ matrix.project }}
-          path: demoblaze-report/
+          path: playwright-report/
           retention-days: 7
 
   api-tests:
@@ -81,5 +81,5 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: demoblaze-report-api
-          path: demoblaze-report/
+          path: playwright-report/
           retention-days: 7
