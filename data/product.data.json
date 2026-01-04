@@ -1,0 +1,35 @@
+[
+  {
+    "uiCategory": "Phones",
+    "apiCategory": "phone",
+    "productName": "Samsung galaxy s7",
+    "shouldExist": true,
+    "productPrice": "$800"
+  },
+  {
+    "uiCategory": "Laptops",
+    "apiCategory": "notebook",
+    "productName": "MacBook Pro",
+    "shouldExist": true,
+    "productPrice": "$1100"
+  },
+  {
+    "uiCategory": "Monitors",
+    "apiCategory": "monitor",
+    "productName": "Apple monitor 24",
+    "shouldExist": true,
+    "productPrice": "$400"
+  },
+  {
+    "uiCategory": "Phones",
+    "apiCategory": "phone",
+    "productName": "Iphone 13",
+    "shouldExist": false
+  },
+  {
+    "uiCategory": "Monitors",
+    "apiCategory": "monitor",
+    "productName": "Apple monitor 27",
+    "shouldExist": false
+  }
+]
