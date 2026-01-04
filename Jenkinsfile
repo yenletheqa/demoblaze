@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    environment {
+        UI_BASE_URL = credentials('UI_BASE_URL')
+        API_BASE_URL = credentials('API_BASE_URL')
+        PAGE_RENDER_TIMEOUT = '5000'
+        USERNAME = credentials('USERNAME')
+        PASSWORD = credentials('PASSWORD')
+    }
+
     parameters {
         choice(
             name: 'BROWSER',
@@ -9,13 +17,9 @@ pipeline {
         )
         choice(
             name: 'SUITE',
-            choices: ['LoginUI', 'SearchUI', 'LoginAPI', 'SearchAPI'],
+            choices: ['LoginAPI', 'SearchAPI','LoginUI', 'SearchUI'],
             description: 'Select test suite'
         )
-    }
-
-    environment {
-        PLAYWRIGHT_BROWSERS_PATH = '0'
     }
 
     stages {
@@ -37,7 +41,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    def grepPattern = ''
+                    def suitePath = ''
 
                     if (params.SUITE == 'LoginUI') {
                         suitePath = 'tests/ui/login.spec'
@@ -53,9 +57,8 @@ pipeline {
                         echo "Running suite: ${params.SUITE}"
                         echo "Browser: ${params.BROWSER}"
 
-                        npx playwright test \
-                          --project=${params.BROWSER} \
-                          --grep "${grepPattern}"
+                        npx playwright test ${suitePath}\
+                          --project=${params.BROWSER}
                     """
                 }
             }

@@ -11,6 +11,13 @@ jobs:
     name: UI Tests (${{ matrix.project }})
     runs-on: ubuntu-latest
 
+    env:
+      UI_BASE_URL: ${{ secrets.UI_BASE_URL }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      PAGE_RENDER_TIMEOUT: ${{ secrets.PAGE_RENDER_TIMEOUT }}
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+
     strategy:
       matrix:
         project: [chromium, firefox]
@@ -38,12 +45,20 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: playwright-report-ui-${{ matrix.project }}
-          path: playwright-report/
+          name: demoblaze-report-ui-${{ matrix.project }}
+          path: demoblaze-report/
+          retention-days: 7
 
   api-tests:
     name: API Tests
     runs-on: ubuntu-latest
+
+    env:
+      UI_BASE_URL: ${{ secrets.UI_BASE_URL }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      PAGE_RENDER_TIMEOUT: 5000
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
 
     steps:
       - name: Checkout repository
@@ -59,11 +74,12 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Run API tests
-        run: npx playwright test tests/api/product
+        run: npx playwright test tests/api/product  --project=chromium
 
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: playwright-report-api
-          path: playwright-report/
+          name: demoblaze-report-api
+          path: demoblaze-report/
+          retention-days: 7

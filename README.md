@@ -141,7 +141,23 @@ yarn test:report
 - API tests run independently
 - Reports are uploaded as artifacts
 
+#### Setup secrets for GitHub Actions
+1. Go to Repository -> Settings -> Secrets and variables -> Actions
+2. Add the following secrets:
+
+| Name               | Value                         |
+| ------------------ | ----------------------------- |
+| UI_BASE_URL        | https://www.demoblaze.com     |
+| API_BASE_URL       | https://api.demoblaze.com     |
+| PAGE_RENDER_TIMEOUT| 5000                          |
+| USERNAME           | tech99                        |
+| PASSWORD           | passtech99                    |
+
 ### Jenkins
 - Parameterized execution
 - Browser and suite selection
 - Suitable for regression and nightly runs
+
+#### Setup secrets for Jenkins
+1. Go to Manage Jenkins -> Credentials
+2. Add new credentials as **Secret Text** for each environment variable listed in the table above.
