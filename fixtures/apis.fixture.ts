@@ -8,9 +8,9 @@ type APIFixtures = {
 };
 
 export const test = base.extend<APIFixtures>({
-  apiContext: async ({}, use) => {
+  apiContext: async ({ }, use) => {
     const apiContext = await request.newContext({
-      baseURL: process.env.API_BASE_PATH || 'https://api.demoblaze.com',
+      baseURL: process.env.API_BASE_PATH || process.env.API_BASE_URL || 'https://api.demoblaze.com',
       extraHTTPHeaders: {
         Accept: '*/*',
         'Content-Type': 'application/json',

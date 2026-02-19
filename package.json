@@ -15,6 +15,8 @@
     "test:api:login": "playwright test tests/api/auth.spec --project=chromium",
     "test:api:search": "playwright test tests/api/product.spec --project=chromium",
     "test:report": "playwright show-report",
-    "test:trace": "playwright show-trace"
+    "test:trace": "playwright show-trace",
+    "test:auth": "playwright test --grep @auth --project=chromium",
+    "test:product": "playwright test --grep @product --project=chromium"
   }
 }
