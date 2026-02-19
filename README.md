@@ -17,7 +17,7 @@ This framework demonstrates **scalable test structure**, **data-driven testing**
 - **Data-Driven Testing:**
   UI and API tests share the same JSON test data for consistency. Test data is organized by feature (e.g. `data/product.data.json`, `data/auth.data.json`).
 - **Multi-Environment Support:**
-  .env file enables flexible execution across environments. Both local names (`BASE_URL`, `API_BASE_PATH`) and CI names (`UI_BASE_URL`, `API_BASE_URL`) are supported.
+  .env file enables flexible execution across environments.
 - **Clean Imports with Barrel Files:**
   index.ts files and path aliases (`@pages`, `@apis`, `@types`, `@data`) reduce long relative paths and improve maintainability.
 - **Short & Meaningful Commands:**
@@ -112,15 +112,13 @@ npx playwright install --with-deps
 **Create a .env file at the project root with the following variables:**
 
 ```properties
-BASE_URL=https://www.demoblaze.com
+UI_BASE_URL=https://www.demoblaze.com
 API_BASE_PATH=https://api.demoblaze.com
 PAGE_RENDER_TIMEOUT=5000
 # Only exposed for practice/demo purposes
 USERNAME=tech99
 PASSWORD=passtech99
 ```
-
-*(In CI you can use `UI_BASE_URL` / `API_BASE_URL` instead of `BASE_URL` / `API_BASE_PATH`; the code accepts both.)*
 
 ---
 
